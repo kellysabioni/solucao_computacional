@@ -23,17 +23,28 @@ public class UsuarioRepository {
 
     public Optional<Usuario> buscarPorLogin(String login) {
         return usuarios.stream()
+                .filter(usuario -> usuario.getLogin() != null)
                 .filter(usuario -> usuario.getLogin().equalsIgnoreCase(login))
                 .findFirst();
     }
 
     public boolean existePorLogin(String login) {
+        if (login == null) {
+            return false;
+        }
+
         return usuarios.stream()
+                .filter(usuario -> usuario.getLogin() != null)
                 .anyMatch(usuario -> usuario.getLogin().equalsIgnoreCase(login));
     }
 
     public boolean existePorCpf(String cpf) {
+        if (cpf == null) {
+            return false;
+        }
+
         return usuarios.stream()
+                .filter(usuario -> usuario.getCpf() != null)
                 .anyMatch(usuario -> usuario.getCpf().equalsIgnoreCase(cpf));
     }
 }

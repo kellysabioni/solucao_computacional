@@ -26,12 +26,16 @@ public class EquipeService {
     }
 
     public Equipe cadastrar(EquipeRequest request) {
-        List<Usuario> membros = request.getLoginsMembros()
+        List<Usuario> membros = request.getLoginsMembros() == null
+                ? List.of()
+                : request.getLoginsMembros()
                 .stream()
                 .map(usuarioService::buscarPorLogin)
                 .collect(Collectors.toList());
 
-        List<Projeto> projetos = request.getNomesProjetos()
+        List<Projeto> projetos = request.getNomesProjetos() == null
+                ? List.of()
+                : request.getNomesProjetos()
                 .stream()
                 .map(projetoService::buscarPorNome)
                 .collect(Collectors.toList());
