@@ -3,411 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de Gerenciamento</title>
+    <title>Sistema de Gerenciamento - Home</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
-  <body class="bg-slate-50 text-slate-800 font-sans">
-    <div class="flex h-screen overflow-hidden">
-      <aside class="w-64 bg-slate-900 text-white flex flex-col justify-between">
-        <div>
+  <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+    <nav class="bg-slate-900 text-white shadow-sm">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="text-xl font-bold tracking-wider flex items-center gap-2">
+          <i class="fa-solid :fa-laptop-code text-indigo-400"></i> Solução
+          Computacional
+        </div>
+        <div class="flex gap-6">
+          <a
+            href="usuarios.html"
+            class="hover:text-indigo-400 transition font-medium"
+            >Usuários</a
+          >
+          <a
+            href="projetos.html"
+            class="hover:text-indigo-400 transition font-medium"
+            >Projetos</a
+          >
+          <a
+            href="equipes.html"
+            class="hover:text-indigo-400 transition font-medium"
+            >Equipes</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main
+      class="flex-1 max-w-7xl w-full mx-auto p-8 flex flex-col justify-center items-center text-center"
+    >
+      <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+        Bem-vindo ao Sistema de Gerenciamento
+      </h1>
+      <p class="text-lg text-slate-600 max-w-2xl mb-12">
+        Gerencie o ciclo de vida dos seus projetos, organize equipes de alta
+        performance e controle o acesso de usuários em uma única plataforma
+        integrada.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl">
+        <a
+          href="usuarios.html"
+          class="bg-white p-6 rounded-2xl shadow-xs border border-slate-200 hover:border-indigo-500 hover:shadow-md transition group text-center"
+        >
           <div
-            class="p-5 text-xl font-bold tracking-wider border-b border-slate-800 flex items-center gap-2"
+            class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition"
           >
-            <i class="fa-solid :fa-laptop-code text-indigo-400"></i> Solução
-            Comp.
+            <i class="fa-solid :fa-users text-xl"></i>
           </div>
-          <nav class="mt-6 px-4 space-y-2">
-            <button
-              onclick="switchTab('usuarios')"
-              id="btn-usuarios"
-              class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-indigo-600 text-white font-medium transition"
-            >
-              <i class="fa-solid :fa-users w-5"></i> Usuários
-            </button>
-            <button
-              onclick="switchTab('projetos')"
-              id="btn-projetos"
-              class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition"
-            >
-              <i class="fa-solid :fa-folder-open w-5"></i> Projetos
-            </button>
-            <button
-              onclick="switchTab('equipes')"
-              id="btn-equipes"
-              class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition"
-            >
-              <i class="fa-solid :fa-people-group w-5"></i> Equipes
-            </button>
-          </nav>
-        </div>
-        <div
-          class="p-4 border-t border-slate-800 text-xs text-slate-500 text-center"
-        >
-          v1.0-SNAPSHOT
-        </div>
-      </aside>
+          <h2 class="text-xl font-bold text-slate-900 mb-2">Usuários</h2>
+          <p class="text-sm text-slate-500">
+            Cadastre colaboradores, administradores e gerentes de projetos.
+          </p>
+        </a>
 
-      <main class="flex-1 flex flex-col overflow-y-auto">
-        <header
-          class="bg-white shadow-sm px-8 py-4 flex justify-between items-center"
+        <a
+          href="projetos.html"
+          class="bg-white p-6 rounded-2xl shadow-xs border border-slate-200 hover:border-indigo-500 hover:shadow-md transition group text-center"
         >
-          <h1 id="page-title" class="text-2xl font-bold text-slate-900">
-            Gerenciamento de Usuários
-          </h1>
-          <div class="flex items-center gap-2 text-sm text-slate-500">
-            <span
-              class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"
-            ></span>
-            API Conectada
+          <div
+            class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition"
+          >
+            <i class="fa-solid :fa-folder-open text-xl"></i>
           </div>
-        </header>
+          <h2 class="text-xl font-bold text-slate-900 mb-2">Projetos</h2>
+          <p class="text-sm text-slate-500">
+            Planeje escopos, defina prazos e acompanhe o status de entrega.
+          </p>
+        </a>
 
-        <div class="p-8 max-w-7xl w-full mx-auto space-y-8">
-          <section
-            id="sec-usuarios"
-            class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-8"
+        <a
+          href="equipes.html"
+          class="bg-white p-6 rounded-2xl shadow-xs border border-slate-200 hover:border-indigo-500 hover:shadow-md transition group text-center"
+        >
+          <div
+            class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-600 group-hover:text-white transition"
           >
-            <div
-              class="bg-white p-6 rounded-xl shadow-xs border border-slate-200 h-fit"
-            >
-              <h2 class="text-lg font-semibold mb-4 text-slate-900">
-                Novo Usuário
-              </h2>
-              <form id="form-usuario" onsubmit="handlePost(event, 'usuarios')">
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-slate-600 mb-1"
-                    >Nome</label
-                  >
-                  <input
-                    type="text"
-                    name="nome"
-                    required
-                    class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-slate-600 mb-1"
-                    >E-mail</label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-lg transition shadow-xs"
-                >
-                  Salvar Usuário
-                </button>
-              </form>
-            </div>
-            <div
-              class="lg:col-span-2 bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden"
-            >
-              <div
-                class="p-5 border-b border-slate-100 flex justify-between items-center"
-              >
-                <h3 class="font-semibold text-slate-900">
-                  Usuários Cadastrados
-                </h3>
-                <button
-                  onclick="fetchData('usuarios')"
-                  class="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-                >
-                  <i class="fa-solid :fa-rotate"></i> Atualizar
-                </button>
-              </div>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                  <thead
-                    class="bg-slate-50 text-slate-400 text-xs uppercase font-semibold"
-                  >
-                    <tr>
-                      <th class="p-4 border-b border-slate-100">Nome</th>
-                      <th class="p-4 border-b border-slate-100">E-mail</th>
-                    </tr>
-                  </thead>
-                  <tbody
-                    id="lista-usuarios"
-                    class="divide-y divide-slate-100 text-sm"
-                  ></tbody>
-                </table>
-              </div>
-            </div>
-          </section>
+            <i class="fa-solid :fa-people-group text-xl"></i>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mb-2">Equipes</h2>
+          <p class="text-sm text-slate-500">
+            Agrupe membros e vincule múltiplos projetos simultâneos.
+          </p>
+        </a>
+      </div>
+    </main>
 
-          <section
-            id="sec-projetos"
-            class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-8 hidden"
-          >
-            <div
-              class="bg-white p-6 rounded-xl shadow-xs border border-slate-200 h-fit"
-            >
-              <h2 class="text-lg font-semibold mb-4 text-slate-900">
-                Novo Projeto
-              </h2>
-              <form id="form-projeto" onsubmit="handlePost(event, 'projetos')">
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-slate-600 mb-1"
-                    >Nome do Projeto</label
-                  >
-                  <input
-                    type="text"
-                    name="nome"
-                    required
-                    class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-slate-600 mb-1"
-                    >Descrição</label
-                  >
-                  <textarea
-                    name="descricao"
-                    rows="3"
-                    class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-lg transition shadow-xs"
-                >
-                  Criar Projeto
-                </button>
-              </form>
-            </div>
-            <div
-              class="lg:col-span-2 bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden"
-            >
-              <div
-                class="p-5 border-b border-slate-100 flex justify-between items-center"
-              >
-                <h3 class="font-semibold text-slate-900">Projetos Ativos</h3>
-                <button
-                  onclick="fetchData('projetos')"
-                  class="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-                >
-                  <i class="fa-solid :fa-rotate"></i> Atualizar
-                </button>
-              </div>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                  <thead
-                    class="bg-slate-50 text-slate-400 text-xs uppercase font-semibold"
-                  >
-                    <tr>
-                      <th class="p-4 border-b border-slate-100">Projeto</th>
-                      <th class="p-4 border-b border-slate-100">Descrição</th>
-                    </tr>
-                  </thead>
-                  <tbody
-                    id="lista-projetos"
-                    class="divide-y divide-slate-100 text-sm"
-                  ></tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-          <section
-            id="sec-equipes"
-            class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-8 hidden"
-          >
-            <div
-              class="bg-white p-6 rounded-xl shadow-xs border border-slate-200 h-fit"
-            >
-              <h2 class="text-lg font-semibold mb-4 text-slate-900">
-                Nova Equipe
-              </h2>
-              <form id="form-equipe" onsubmit="handlePost(event, 'equipes')">
-                <div class="mb-4">
-                  <label class="block text-sm font-medium text-slate-600 mb-1"
-                    >Nome da Equipe</label
-                  >
-                  <input
-                    type="text"
-                    name="nome"
-                    required
-                    class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-lg transition shadow-xs"
-                >
-                  Registrar Equipe
-                </button>
-              </form>
-            </div>
-            <div
-              class="lg:col-span-2 bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden"
-            >
-              <div
-                class="p-5 border-b border-slate-100 flex justify-between items-center"
-              >
-                <h3 class="font-semibold text-slate-900">Equipes Formadas</h3>
-                <button
-                  onclick="fetchData('equipes')"
-                  class="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
-                >
-                  <i class="fa-solid :fa-rotate"></i> Atualizar
-                </button>
-              </div>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                  <thead
-                    class="bg-slate-50 text-slate-400 text-xs uppercase font-semibold"
-                  >
-                    <tr>
-                      <th class="p-4 border-b border-slate-100">
-                        Nome da Equipe
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody
-                    id="lista-equipes"
-                    class="divide-y divide-slate-100 text-sm"
-                  ></tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-
-    <script>
-      // Altere para a URL correta onde o seu servidor Java (Spring Boot / Undertow / Tomcat) está rodando
-      const API_BASE_URL = "http://localhost:8080";
-
-      // Função para alternar entre as abas (Usuários, Projetos, Equipes)
-      function switchTab(tabName) {
-        // Esconder todas as seções
-        document
-          .querySelectorAll(".tab-content")
-          .forEach((el) => el.classList.add("hidden"));
-        // Remover estilos ativos dos botões
-        document.querySelectorAll(".tab-btn").forEach((btn) => {
-          btn.classList.remove("bg-indigo-600", "text-white");
-          btn.classList.add(
-            "text-slate-400",
-            "hover:bg-slate-800",
-            "hover:text-white",
-          );
-        });
-
-        // Mostrar a seção selecionada
-        document.getElementById(`sec-${tabName}`).classList.remove("hidden");
-        // Ativar o botão selecionado
-        const activeBtn = document.getElementById(`btn-${tabName}`);
-        activeBtn.classList.add("bg-indigo-600", "text-white");
-        activeBtn.classList.remove(
-          "text-slate-400",
-          "hover:bg-slate-800",
-          "hover:text-white",
-        );
-
-        // Atualizar o título do Header
-        const titles = {
-          usuarios: "Gerenciamento de Usuários",
-          projetos: "Gerenciamento de Projetos",
-          equipes: "Gerenciamento de Equipes",
-        };
-        document.getElementById("page-title").innerText = titles[tabName];
-
-        // Buscar os dados da rota correspondente
-        fetchData(tabName);
-      }
-
-      // Função genérica para realizar o GET das rotas
-      async function fetchData(endpoint) {
-        const tbody = document.getElementById(`lista-${endpoint}`);
-        tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-slate-400"><i class="fa-solid :fa-spinner animate-spin"></i> Carregando dados...</td></tr>`;
-
-        try {
-          const response = await fetch(`${API_BASE_URL}/${endpoint}`);
-          if (!response.ok) throw new Error("Erro na requisição");
-          const dados = await response.json();
-
-          tbody.innerHTML = ""; // Limpa o loading
-
-          if (dados.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-slate-400">Nenhum registro encontrado.</td></tr>`;
-            return;
-          }
-
-          // Renderiza as linhas dinamicamente dependendo da entidade
-          dados.forEach((item) => {
-            let tr = document.createElement("tr");
-            tr.className = "hover:bg-slate-50 transition";
-
-            if (endpoint === "usuarios") {
-              tr.innerHTML = `
-                            <td class="p-4 font-medium text-slate-900">${item.nome || "Sem nome"}</td>
-                            <td class="p-4 text-slate-500">${item.email || "-"}</td>
-                        `;
-            } else if (endpoint === "projetos") {
-              tr.innerHTML = `
-                            <td class="p-4 font-medium text-slate-900">${item.nome || "Sem nome"}</td>
-                            <td class="p-4 text-slate-500">${item.descricao || "-"}</td>
-                        `;
-            } else if (endpoint === "equipes") {
-              tr.innerHTML = `
-                            <td class="p-4 font-medium text-slate-900">${item.nome || "Sem nome"}</td>
-                        `;
-            }
-            tbody.appendChild(tr);
-          });
-        } catch (error) {
-          console.error(error);
-          tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-rose-500 font-medium"><i class="fa-solid :fa-triangle-exclamation"></i> Erro ao conectar com o backend em ${API_BASE_URL}/${endpoint}</td></tr>`;
-        }
-      }
-
-      // Função genérica para realizar o POST das rotas
-      async function handlePost(event, endpoint) {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
-
-        // Converte os dados do form em Objeto literal / JSON
-        const data = Object.fromEntries(formData.entries());
-
-        try {
-          const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-
-          if (response.ok) {
-            form.reset(); // Limpa o formulário
-            fetchData(endpoint); // Atualiza a tabela imediatamente
-            alert(
-              `${endpoint.slice(0, -1).toUpperCase()} cadastrado com sucesso!`,
-            );
-          } else {
-            alert("Erro ao realizar o cadastro no servidor.");
-          }
-        } catch (error) {
-          console.error(error);
-          alert("Não foi possível conectar ao servidor backend.");
-        }
-      }
-
-      // Inicializa a aplicação carregando a aba de usuários por padrão
-      document.addEventListener("DOMContentLoaded", () => {
-        fetchData("usuarios");
-      });
-    </script>
+    <footer
+      class="bg-slate-100 text-center py-4 text-xs text-slate-500 border-t border-slate-200"
+    >
+      solucao_computacional &copy; 2026 - Painel Administrativo
+    </footer>
   </body>
 </html>

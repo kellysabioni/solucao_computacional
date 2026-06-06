@@ -1,10 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciamento de Projetos</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+    <nav class="bg-slate-900 text-white shadow-sm">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="text-xl font-bold tracking-wider flex items-center gap-2">
+          <a href="index.html" class="hover:text-indigo-400 transition"
+            ><i class="fa-solid :fa-laptop-code text-indigo-400"></i> Solução
+            Computacional</a
+          >
+        </div>
+        <div class="flex gap-6">
+          <a
+            href="usuarios.html"
+            class="hover:text-indigo-400 transition font-medium"
+            >Usuários</a
+          >
+          <a href="projetos.html" class="text-indigo-400 font-medium"
+            >Projetos</a
+          >
+          <a
+            href="equipes.html"
+            class="hover:text-indigo-400 transition font-medium"
+            >Equipes</a
+          >
+        </div>
+      </div>
+    </nav>
 
-</body>
+    <main class="flex-1 max-w-7xl w-full mx-auto p-8 space-y-8">
+      <h1 class="text-3xl font-extrabold text-slate-900">
+        Gerenciamento de Projetos
+      </h1>
+
+      <div
+        id="mensagemProjeto"
+        class="hidden p-4 rounded-lg font-medium text-sm"
+      ></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div
+          class="bg-white p-6 rounded-xl shadow-xs border border-slate-200 h-fit"
+        >
+          <h2 class="text-lg font-semibold mb-4 text-slate-900">
+            Novo Projeto
+          </h2>
+          <form id="formProjeto" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-600 mb-1"
+                >Nome do Projeto</label
+              >
+              <input
+                type="text"
+                id="nomeProjeto"
+                required
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-600 mb-1"
+                >Descrição</label
+              >
+              <textarea
+                id="descricaoProjeto"
+                rows="2"
+                required
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+              ></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-600 mb-1"
+                >Data de Início</label
+              >
+              <input
+                type="date"
+                id="dataInicio"
+                required
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-600 mb-1"
+                >Data de Término Prevista</label
+              >
+              <input
+                type="date"
+                id="dataTerminoPrevista"
+                required
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-600 mb-1"
+                >Status</label
+              >
+              <select
+                id="statusProjeto"
+                required
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-white"
+              >
+                <option value="PLANEJADO">PLANEJADO</option>
+                <option value="EM_ANDAMENTO">EM_ANDAMENTO</option>
+                <option value="CONCLUIDO">CONCLUIDO</option>
+                <option value="CANCELADO">CANCELADO</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-600 mb-1"
+                >Gerente Responsável</label
+              >
+              <select
+                id="gerenteResponsavel"
+                required
+                class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-white"
+              ></select>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-lg transition shadow-xs"
+            >
+              Salvar Projeto
+            </button>
+          </form>
+        </div>
+
+        <div
+          class="lg:col-span-2 bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden h-fit"
+        >
+          <div class="p-5 border-b border-slate-100">
+            <h3 class="font-semibold text-slate-900">Projetos Cadastrados</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table id="tabelaProjetos" class="w-full text-left border-collapse">
+              <thead
+                class="bg-slate-50 text-slate-500 text-xs uppercase font-semibold"
+              >
+                <tr>
+                  <th class="p-4 border-b border-slate-100">Nome</th>
+                  <th class="p-4 border-b border-slate-100">
+                    Datas (Início/Fim)
+                  </th>
+                  <th class="p-4 border-b border-slate-100">Status</th>
+                  <th class="p-4 border-b border-slate-100">Gerente</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-sm"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const BASE_URL = "http://localhost:8080";
+
+      function exibirMensagem(texto, erro = false) {
+        const box = document.getElementById("mensagemProjeto");
+        box.innerText = texto;
+        box.className = `p-4 rounded-lg font-medium text-sm ${erro ? "bg-rose-50 text-rose-600 border border-rose-200" : "bg-emerald-50 text-emerald-600 border border-emerald-200"}`;
+        box.classList.remove("hidden");
+      }
+
+      async function carregarGerentes() {
+        try {
+          const res = await fetch(`${BASE_URL}/usuarios`);
+          const usuarios = res.ok ? await res.json() : [];
+          const select = document.getElementById("gerenteResponsavel");
+          select.innerHTML =
+            '<option value="">Selecione um gerente...</option>';
+
+          // Validação estrita de perfil: GERENTE
+          usuarios
+            .filter((u) => u.perfil === "GERENTE")
+            .forEach((g) => {
+              const opt = document.createElement("option");
+              opt.value = g.login;
+              opt.innerText = g.nomeCompleto;
+              select.appendChild(opt);
+            });
+        } catch {
+          exibirMensagem("Erro ao buscar gerentes.", true);
+        }
+      }
+
+      async function listarProjetos() {
+        try {
+          const res = await fetch(`${BASE_URL}/projetos`);
+          const projetos = res.ok ? await res.json() : [];
+          const tbody = document
+            .getElementById("tabelaProjetos")
+            .querySelector("tbody");
+          tbody.innerHTML =
+            projetos.length === 0
+              ? `<tr><td colspan="4" class="p-4 text-center text-slate-400">Nenhum projeto encontrado.</td></tr>`
+              : "";
+
+          projetos.forEach((p) => {
+            const tr = document.createElement("tr");
+            tr.className = "hover:bg-slate-50 transition";
+            tr.innerHTML = `
+                        <td class="p-4 font-medium text-slate-900">
+                            <div>${p.nome}</div>
+                            <div class="text-xs text-slate-400 max-w-xs truncate">${p.descricao}</div>
+                        </td>
+                        <td class="p-4 text-slate-500 text-xs">${p.dataInicio} à ${p.dataTerminoPrevista}</td>
+                        <td class="p-4"><span class="px-2 py-1 rounded-sm text-xs font-semibold ${p.status === "CONCLUIDO" ? "bg-emerald-100 text-emerald-700" : p.status === "EM_ANDAMENTO" ? "bg-blue-100 text-blue-700" : "bg-slate-100 text-slate-600"}">${p.status}</span></td>
+                        <td class="p-4 text-slate-500 font-medium">${p.loginGerente}</td>
+                    `;
+            tbody.appendChild(tr);
+          });
+        } catch {
+          exibirMensagem("Erro ao listar projetos.", true);
+        }
+      }
+
+      document
+        .getElementById("formProjeto")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const payload = {
+            nome: document.getElementById("nomeProjeto").value,
+            descricao: document.getElementById("descricaoProjeto").value,
+            dataInicio: document.getElementById("dataInicio").value,
+            dataTerminoPrevista: document.getElementById("dataTerminoPrevista")
+              .value,
+            status: document.getElementById("statusProjeto").value,
+            loginGerente: document.getElementById("gerenteResponsavel").value,
+          };
+
+          try {
+            const res = await fetch(`${BASE_URL}/projetos`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            if (res.ok) {
+              exibirMensagem("Projeto criado com sucesso!");
+              document.getElementById("formProjeto").reset();
+              listarProjetos();
+            } else {
+              exibirMensagem("Erro ao cadastrar projeto.", true);
+            }
+          } catch {
+            exibirMensagem("Erro na comunicação com o servidor.", true);
+          }
+        });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        carregarGerentes();
+        listarProjetos();
+      });
+    </script>
+  </body>
 </html>
