@@ -195,11 +195,12 @@
             const tr = document.createElement("tr");
             tr.className = "hover:bg-slate-50 transition";
 
-            const membrosStr = e.loginsMembros
-              ? e.loginsMembros.join(", ")
+            const membrosStr = e.membros && e.membros.length > 0
+              ? e.membros.map(membro => membro.login).join(", ")
               : "-";
-            const projetosStr = e.nomesProjetos
-              ? e.nomesProjetos.join(", ")
+
+            const projetosStr = e.projetos && e.projetos.length > 0
+              ? e.projetos.map(projeto => projeto.nome).join(", ")
               : "-";
 
             tr.innerHTML = `
